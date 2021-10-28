@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h1>Hello Nuxters! 👋</h1>
+    <h1>bing chilling</h1>
     <p>
-      This page is rendered on the <strong>{{ rendering }}</strong>
+      there is a screwdriver in my asshole <strong>{{ rendering }}</strong>
     </p>
     <p v-if="rendering === 'server'">
-      First load or hard refresh is done on server side.
+      please send help
     </p>
     <p v-if="rendering === 'client'">Navigation is done on client side.</p>
     <ul>
-      <li>Refresh the page for server side rendering.</li>
-      <li>Click the links to see client side rendering.</li>
+      <li>bruh</li>
+      <li>i am going to die</li>
     </ul>
 
-    <NuxtLink to="/about">About Page</NuxtLink>
+    <NuxtLink to="/about">this goes nowhere</NuxtLink>
   </div>
 </template>
 <script>
