@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
+  <div>
     <h1>bing chilling</h1>
-    <img :src="image" />
     <p>
       there is a screwdriver in my asshole
     </p>
@@ -18,12 +17,10 @@
   </div>
 </template>
 <script>
-import image from "https://i.ytimg.com/vi/RkBtTtaZZQg/maxresdefault.jpg"
 export default {
   asyncData() {
     return {
       rendering: process.server ? 'server' : 'client'
-      image: image
     }
   }
 }
