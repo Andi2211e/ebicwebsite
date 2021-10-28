@@ -10,7 +10,7 @@
     </p>
     <p v-if="rendering === 'client'">Navigation is done on client side.</p>
     <ul>
-      <li>bruh</li>
+      <li>oh no</li>
       <li>i am going to die</li>
     </ul>
 
