@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>bing chilling</h1>
-    <NuxtLink to="https://i.ytimg.com/vi/RkBtTtaZZQg/maxresdefault.jpg">bing chilling</NuxtLink>
+    <a href="https://cdn.discordapp.com/attachments/707551577740804136/903394526511657000/maxresdefault.png">bing chilling</a>
     <p>
       there is a screwdriver in my asshole
     </p>
