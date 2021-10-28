@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>bing chilling</h1>
+    <img v-bind:src"https://i.ytimg.com/vi/RkBtTtaZZQg/maxresdefault.jpg" />
     <p>
       there is a screwdriver in my asshole
     </p>
