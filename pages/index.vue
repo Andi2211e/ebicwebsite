@@ -1,3 +1,384 @@
-<template>
-  <Tutorial/>
-</template>
+<html>
+  <head>
+    <style>
+      .grid {
+        display: inline-flex;
+        flex-direction: column;
+        background: #666;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .row {
+        display: flex;
+        height: 4px;
+      }
+
+      .item {
+        width: 4px;
+      }
+
+      .item.populated {
+        background: #FBBD03;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='root'>
+      <template>
+        Template: 
+        <select ref='select_templates' v-model='selected_template'>
+          <option disabled value=''>custom</option>
+          <option v-for='(t, k) in templates' :value='k'>{{ k }}</option>
+        </select>
+        <br />
+        Width: <input type='range' min='1' max='200' v-model.number='dimensions.width' />
+        Height: <input type='range' min='1' max='200' v-model.number='dimensions.height' />
+        <br />
+        <button @click='toggle_play'>Play/Pause</button>
+        <button @click='step'>Step</button>
+        <br />
+        Generation {{ generation }}
+        <br />
+        <div class='grid'>
+          <div v-for='(row, i) in grid'
+            class='row'
+            @mousedown='mousedown'
+            @mouseup='mouseup'>
+            <div v-for='(item, j) in row'
+              class='item'
+              :class='{ populated: item }'
+              @mouseover='hover(i, j)'>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <script src='https://unpkg.com/vue@2.5.8/dist/vue.min.js'></script>
+    <script>
+      const templates = {
+        empty: [[]],
+        glider: [
+          [false, false, true],
+          [true, false, true],
+          [false, true, true]
+        ],
+        r_pentomino: [
+          [false, true, true],
+          [true, true, false],
+          [false, true, false]
+        ],
+        die_hard: [
+          [false, false, false, false, false, false, true, false],
+          [true, true, false, false, false, false, false, false],
+          [false, true, false, false, false, true, true, true]
+        ],
+        acorn: [
+          [false, true, false, false, false, false, false],
+          [false, false, false, true, false, false, false],
+          [true, true, false, false, true, true, true]
+        ],
+        glass_castle: [
+          [false, false, true, true, false, false, false],
+          [false, true, false, false, true, false, false],
+          [false, false, true, true, false, false, false],
+          [false, false, false, false, false, false, false],
+          [false, false, false, false, false, false, true],
+          [false, false, false, false, false, false, true],
+          [false, false, false, false, false, false, true],
+          [false, true, true, true, true, true, false],
+          [true, false, false, false, false, false, false],
+          [true, false, false, false, false, false, false],
+          [true, false, false, false, false, false, false],
+          [false, false, false, false, false, false, false],
+          [false, false, false, true, true, false, false],
+          [false, false, true, false, false, true, false],
+          [false, false, false, true, true, false, false],
+        ],
+        octagon_bloom: [
+          [false, false, true, true, false, false, false],
+          [false, true, true, true, true, false, false],
+          [false, false, true, true, false, false, false],
+          [false, false, false, false, false, false, false],
+          [false, false, false, false, false, false, true],
+          [false, false, false, false, false, false, true],
+          [false, false, false, false, false, false, true],
+          [false, true, true, true, true, true, false],
+          [true, false, false, false, false, false, false],
+          [true, false, false, false, false, false, false],
+          [true, false, false, false, false, false, false],
+          [false, false, false, false, false, false, false],
+          [false, false, false, true, true, false, false],
+          [false, false, true, true, true, true, false],
+          [false, false, false, true, true, false, false],
+        ],
+        s_coffin: [
+          [false, true, true, true, true, true, true, true, false],
+          [false, false, false, false, false, true, true, false, false],
+          [true, false, false, false, false, false, false, false, true],
+          [false, false, true, true, false, false, false, false, false],
+          [false, true, true, true, true, true, true, true, false]
+        ],
+        s_coffin_2: [
+          [false, true, true, true, true, true, true, false],
+          [false, false, false, false, true, true, false, false],
+          [true, false, false, false, false, false, false, true],
+          [false, false, true, true, false, false, false, false],
+          [false, true, true, true, true, true, true, false]
+        ],
+        s_coffin_3: [
+          [false, true, true, true, true, true, true, false],
+          [false, false, false, false, true, true, false, false],
+          [true, true, false, false, false, false, true, true],
+          [false, false, true, true, false, false, false, false],
+          [false, true, true, true, true, true, true, false]
+        ],
+        s_coffin_4: [
+          [false, false, true, true, true, true, false, false],
+          [false, false, false, false, true, true, false, false],
+          [true, false, false, false, false, false, false, true],
+          [false, false, true, true, false, false, false, false],
+          [false, false, true, true, true, true, false, false]
+        ],
+        s_coffin_5: [
+          [false, true, true, true, true, false],
+          [false, false, false, true, true, false],
+          [true, false, false, false, false, true],
+          [false, true, true, false, false, false],
+          [false, true, true, true, true, false]
+        ],
+        four_dot: [
+          [true, true, false, true],
+          [false, true, false, true],
+          [false, false, false, true],
+        ],
+        flash: [
+          [true, true, true, false, true, true, true],
+          [true, false, true, false, true, false, true],
+          [true, true, true, false, true, true, true]
+        ],
+        pulsar: [
+          [true, true, true, false, false, false, true, true, true],
+          [true, false, true, false, false, false, true, false, true],
+          [true, true, true, false, false, false, true, true, true]
+        ],
+        frog: [
+          [false, false, false, true, false, false, false],
+          [false, false, true, true, true, false, false],
+          [false, true, true, true, true, true, false],
+          [true, true, false, false, false, true, true]
+        ],
+        block_layer: [
+          [false, false, false, false, false, false, true, false],
+          [false, false, false, false, true, false, true, true],
+          [false, false, false, false, true, false, true, false],
+          [false, false, false, false, true, false, false, false],
+          [false, false, true, false, false, false, false, false],
+          [true, false, true, false, false, false, false, false]
+        ]
+      }
+
+      function survivable(grid, i, j, height, width) {
+        let neighbors = 0
+
+        for (let ti = i - 1; ti <= i + 1; ti++) {
+          for (let tj = j - 1; tj <= j + 1; tj++) {
+            if (
+              !(ti === i && tj === j) &&
+              ti >= 0 && tj >= 0 &&
+              ti < height && tj < width &&
+              grid[ti][tj]
+            ) {
+              neighbors++
+            }
+          }
+        }
+
+        return neighbors === 3 || (neighbors === 2 && grid[i][j])
+      }
+
+      function iterate(grid, next_grid) {
+        const height = grid.length
+        const width = grid[0].length
+
+        for (let i = 0; i < height; i++) {
+          for (let j = 0; j < width; j++) {
+            next_grid[i][j] = survivable(grid, i, j, height, width)
+          }
+        }
+      }
+
+      function generate_grid(height, width) {
+        const grid = Array(height)
+        for (let i = 0; i < grid.length; i++) {
+          grid[i] = Array(width)
+        }
+        return grid
+      }
+
+      function clear_grid(grid) {
+        const height = grid.length
+        const width = grid[0].length
+
+        for (let i = 0; i < height; i++) {
+          for (let j = 0; j < width; j++) {
+            grid[i][j] = false
+          }
+        }
+      }
+
+      function greater(a, b) {
+        return a > b ? a : b
+      }
+
+      function lesser(a, b) {
+        return a < b ? a : b
+      }
+
+      function apply_template(grid, template, y0, x0) {
+        const height = grid.length
+        const width = grid[0].length
+
+        const t_height = template.length
+        const t_width = template[0].length
+
+        for (
+          let y = y0, i = y0 < 0 ? -y0 : 0;
+          y < lesser(height, y0 + t_height);
+          y++, i++
+        ) {
+          for (
+            let x = x0, j = x0 < 0 ? -x0 : 0;
+            x < lesser(width, x0 + t_width);
+            x++, j++
+          ) {
+            grid[y][x] = template[i][j]
+          }
+        }
+      }
+
+      function apply_template_center(grid, template) {
+        const height = grid.length
+        const width = grid[0].length
+
+        const t_height = template.length
+        const t_width = template[0].length
+
+        const y0 = (height - t_height) / 2 | 0
+        const x0 = (width - t_width) / 2 | 0
+
+        apply_template(grid, template, y0, x0)
+      }
+
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          templates,
+          selected_template: '',
+          generation: 0,
+          grid: [],
+          back_grid: [],
+          dimensions: {
+            width: 100,
+            height: 100,
+          },
+          hovered: null,
+          mouse: false,
+          playing: false
+        },
+        created() {
+          addEventListener('keydown', this.key);
+          this.allocate_grid()
+          this.selected_template = 'glass_castle'
+        },
+        methods: {
+          toggle(i, j) {
+            if (this.selected_template !== '') this.selected_template = ''
+            this.$set(this.grid[i], j, !this.grid[i][j])
+          },
+          step() {
+            if (this.selected_template !== '') this.selected_template = ''
+            iterate(this.grid, this.back_grid)
+            this.swap_buffers()
+            this.generation++
+
+            if (this.playing) requestAnimationFrame(this.step)
+          },
+          swap_buffers() {
+            const next_grid = this.back_grid
+            this.back_grid = this.grid
+            this.grid = next_grid
+          },
+          template(name) {
+            const t = this.templates[name]
+            clear_grid(this.back_grid)
+            apply_template_center(this.back_grid, t)
+            this.swap_buffers()
+            this.generation = 0
+          },
+          toggle_play() {
+            this.playing = !this.playing
+          },
+          key(ev) {
+            if (ev.which === 80) {
+              // p
+              this.toggle_play()
+            } else if (ev.which === 8) {
+              // backspace
+              this.selected_template = 'empty'
+            } else if (ev.which === 83) {
+              // s
+              this.step()
+            }
+          },
+          hover(i, j) {
+            this.hovered = [i, j]
+          },
+          mousedown() {
+            this.mouse = true
+          },
+          mouseup() {
+            this.mouse = false
+          },
+          toggle_hovered() {
+            const [i, j] = this.hovered
+            this.toggle(i, j)
+          },
+          allocate_grid() {
+            this.playing = false
+            this.generation = 0
+            this.grid = generate_grid(this.dimensions.height, this.dimensions.width)
+            this.back_grid = generate_grid(this.dimensions.height, this.dimensions.width)
+          }
+        },
+        watch: {
+          mouse(new_mouse) {
+            if (new_mouse && this.hovered !== null) this.toggle_hovered()
+          },
+          hovered(new_hovered) {
+            if (this.mouse && new_hovered !== null) this.toggle_hovered()
+          },
+          playing(new_playing) {
+            if (new_playing) this.step()
+          },
+          selected_template() {
+            if (this.selected_template !== '') {
+              this.template(this.selected_template)
+            }
+            this.$refs.select_templates.blur()
+          },
+          dimensions: {
+            handler() {
+              this.allocate_grid()
+            },
+            deep: true
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
