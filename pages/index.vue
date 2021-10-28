@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <h1>bing chilling</h1>
     <img :src="image" />
     <p>
