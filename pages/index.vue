@@ -2,7 +2,7 @@
   <div>
     <h1>bing chilling</h1>
     <p>
-      there is a screwdriver in my asshole <strong>{{ rendering }}</strong>
+      there is a screwdriver in my asshole
     </p>
     <p v-if="rendering === 'server'">
       please send help
