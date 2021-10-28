@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <h1>nowhere</h1>
+    <p>
+      bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  bruh moment  
+    </p>
+  </div>
+</template>
+<script>
+export default {
+  asyncData() {
+    return {
+      rendering: process.server ? 'server' : 'client'
+    }
+  }
+}
+</script>
