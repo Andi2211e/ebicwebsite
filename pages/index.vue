@@ -39,5 +39,8 @@ p {
 li {
   font-family: 'Open Sans', sans-serif;
 }
+NuxtLink {
+  font-family: 'Open Sans', sans-serif;
+}
 
 </style>
