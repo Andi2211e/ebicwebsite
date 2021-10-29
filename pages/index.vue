@@ -33,4 +33,11 @@ export default {
 h1 {
   font-family: 'Open Sans', sans-serif;
 }
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+li {
+  font-family: 'Open Sans', sans-serif;
+}
+
 </style>
