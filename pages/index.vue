@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>bing chilling</h1>
-    <a href="https://cdn.discordapp.com/attachments/707551577740804136/903394526511657000/maxresdefault.png">bing chilling</a>
+    <img src="~/static/bingchilling.png" />
     <p>
       the chinese government is coming to kill me
     </p>
