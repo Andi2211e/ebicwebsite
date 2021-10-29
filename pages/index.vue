@@ -30,4 +30,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
 </style>
