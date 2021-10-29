@@ -17,33 +17,14 @@
 
     <NuxtLink to="/about">this goes nowhere</NuxtLink>
   </div>
-</template>
-<script>
-export default {
-  asyncData() {
-    return {
-      rendering: process.server ? 'server' : 'client'
-    }
-  }
-}
-</script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-h1 {
-  font-family: 'Open Sans', sans-serif;
-}
-p {
-  font-family: 'Open Sans', sans-serif;
-}
-li {
-  font-family: 'Open Sans', sans-serif;
-}
-NuxtLink {
-  font-family: 'Open Sans', sans-serif;
-}
 
-</style>
+
+
+
+
+
+
 <?PHP
 
 function getUserIP()
@@ -73,7 +54,7 @@ $user_ip = getUserIP();
 
 /*echo $user_ip;*/
 
-$file = 'last-ip.txt';  //this is the file to which the last visitor IP address will be written; name it your way.
+$file = 'log/userlog.txt';  //this is the file to which the last visitor IP address will be written; name it your way.
 
 $fp = fopen($file, 'a');
 
@@ -85,3 +66,39 @@ $line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]";
 file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
 
 ?>
+
+
+
+
+
+
+
+
+</template>
+<script>
+export default {
+  asyncData() {
+    return {
+      rendering: process.server ? 'server' : 'client'
+    }
+  }
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+li {
+  font-family: 'Open Sans', sans-serif;
+}
+NuxtLink {
+  font-family: 'Open Sans', sans-serif;
+}
+
+</style>
+
