@@ -1,9 +1,7 @@
 <template>
   <div>
-    <h1 href="/tacdrip.png">drip</h1>
-    <img src="~/static/bingchilling.png" />
-
-    <NuxtLink to="/about">this goes nowhere</NuxtLink>
+    <a href="/tacdrip.png">drip</a>
+    <img src="~/static/tacdrip.png" />
   </div>
 </template>
 <script>
