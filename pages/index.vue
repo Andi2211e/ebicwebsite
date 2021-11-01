@@ -15,7 +15,7 @@
       <li>mika is cringe</li>
     </ul>
 
-    <NuxtLink to="/about">this goes nowhere</NuxtLink>
+    <NuxtLink to="/bruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmoment">this goes nowhere</NuxtLink>
   </div>
 
 </template>
