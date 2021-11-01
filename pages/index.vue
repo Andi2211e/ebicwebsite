@@ -17,7 +17,7 @@
 
     <NuxtLink to="/bruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmomentbruhmoment">this goes nowhere</NuxtLink>
     <p> </p>
-    <Nuxtlink to="/test">this might go somewhere</NuxtLink>
+    <Nuxtlink to="/drip-page">this might go somewhere</NuxtLink>
   </div>
 
 </template>
