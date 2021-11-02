@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="/tacdrip.png">drip</a>
+    <a href="/txt.txt">drip</a>
     <img src="~/static/tacdrip.png" />
   </div>
 </template>
