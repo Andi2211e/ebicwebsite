@@ -11,6 +11,16 @@ export default {
       rendering: process.server ? 'server' : 'client'
     }
   }
+  head: {
+    title: 'IWC Offizielle Webseite',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Dies ist die Webseite der offizielen IWC tropfer (drip drip)'
+      }
+    ],
+  }
 }
 </script>
 
