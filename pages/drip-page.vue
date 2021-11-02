@@ -7,12 +7,12 @@
 <script>
 export default {
   head: {
-    title: 'IWC Offizielle Webseite',
+    title: 'Offizielle IWC Webseite',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Dies ist die Webseite der offizielen IWC tropfer (drip drip)'
+        content: 'Dies ist die offizielle Webseite der IWC tropfer (drip drip)'
       }
     ],
   }
