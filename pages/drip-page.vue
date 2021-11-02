@@ -14,7 +14,7 @@ export default {
         name: 'description',
         content: 'Dies ist die offizielle Webseite der IWC tropfer (drip drip)'
       }
-    ],
+    ]
   }
 }
 </script>
