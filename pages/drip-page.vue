@@ -6,11 +6,6 @@
 </template>
 <script>
 export default {
-  asyncData() {
-    return {
-      rendering: process.server ? 'server' : 'client'
-    }
-  }
   head: {
     title: 'IWC Offizielle Webseite',
     meta: [
