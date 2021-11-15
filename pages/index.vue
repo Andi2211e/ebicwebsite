@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="red">bing chilling</h1>
+    <h1 class="blue">bing chilling</h1>
     <img src="~/static/bingchilling.png" />
     <p>
       the chinese government is coming to kill me
@@ -32,8 +32,8 @@ export default {
 </script>
 
 <style>
-.red {
-    color: red;
+.blue {
+    color: blue;
   }
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 h1 {
