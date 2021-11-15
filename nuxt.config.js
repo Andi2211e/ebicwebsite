@@ -4,14 +4,14 @@ export default {
 
   // Global App headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Offizielle IWC Webseite',
+    title: 'suspekt',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Dies ist die offizielle Webseite der IWC tropfer (drip drip)',
+        content: 'dropf dropf dropf',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -28,5 +28,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: []
+  modules: [
+    '@nuxtjs/cloudinary',
+  ]
+  cloudinary: {
+  cloudName: process.env.CLOUDNAME,
+  apiKey: process.env.API_KEY, //only needed if you are using server-side upload
+  apiSecret: process.env.API_SECRET, //only needed if you are using server-side upload
+}
 };
