@@ -29,11 +29,5 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/cloudinary',
   ]
-  cloudinary: {
-  cloudName: process.env.CLOUDNAME,
-  apiKey: process.env.API_KEY, //only needed if you are using server-side upload
-  apiSecret: process.env.API_SECRET, //only needed if you are using server-side upload
-}
 };
