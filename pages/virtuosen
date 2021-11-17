@@ -1,11 +1,22 @@
 <template>
   <div>
-    <h1> ATTENTION CITIZEN! </h1>
     <img src="~/static/pagacingeii.png" />
-    <p>Glory to the CCP</p>
   </div>
 </template>
-
+<script>
+export default {
+  head: {
+    title: 'dfsgssg',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'sfdgggggggggggggg'
+      }
+    ]
+  }
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
