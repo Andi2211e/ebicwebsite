@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>attention citizen</p>
     <img src="~/static/pagacingeii.png" />
   </div>
 </template>
