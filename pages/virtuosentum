@@ -5,18 +5,6 @@
   </div>
 </template>
 <script>
-export default {
-  head: {
-    title: 'dfsgssg',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'sfdgggggggggggggg'
-      }
-    ]
-  }
-}
 </script>
 
 <style>
