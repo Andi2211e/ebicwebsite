@@ -1,7 +1,7 @@
 <template>
   <div>
     <a href="/txt.txt">drip</a>
-    <img src="~/static/tacdrip.png" />
+    <img src="~/static/pagacingeii.png" />
   </div>
 </template>
 <script>
