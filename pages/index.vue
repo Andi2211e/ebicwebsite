@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="blue">bing chilling</h1>
-    <img src="~/static/bingchilling.png" />
+    <img src="~/static/Screenshot 2021-10-28 182523.png" />
     <p>
       the chinese government is coming to kill me
     </p>
